@@ -7,8 +7,6 @@ from schema.parking import ParkingBase, ParkseatBase
 
 TOTAL_SPOTS = 100
 
-
-
 def vehiclelist(db: Session):
     return db.query(Parking.carnum, Parking.barrier, Parking.intime, Parking.outtime,
                     Parking.pno).order_by(Parking.pno.desc()).all()

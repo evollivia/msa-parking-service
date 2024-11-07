@@ -8,8 +8,6 @@ from service.parking import vehiclelist, parkseatlist
 from models.parking import Parkseat
 
 router = APIRouter()
-
-
 TOTAL_SPOTS = 100
 
 
@@ -41,6 +39,7 @@ async def get_available_spots(db: Session = Depends(get_db)):
         "total_available_spots": total_available_spots,
         "used_spots": total_occupied  # 사용 중인 자리 수 추가
     }
+
 
 @router.get("/status")
 def get_parking_status(db: Session = Depends(get_db)):

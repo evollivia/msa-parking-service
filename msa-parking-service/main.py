@@ -12,11 +12,6 @@ from service.database import SessionLocal, create_tables
 app = FastAPI()
 
 # CORS 설정
-# origins = [
-#     "http://localhost:3000",  # 허용할 프론트엔드 도메인
-#     "http://127.0.0.1:3000",
-# ]
-
 origins = os.getenv('CORS_ORIGINS','http://localhost:3000').split(",")
 print('CORS -> ',origins)
 
