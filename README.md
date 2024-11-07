@@ -6,3 +6,4 @@ parking-service
 - msa-parking-service
 - msa-statistics-service
 ---
+1. 2024-11-07 생성
