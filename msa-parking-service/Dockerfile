@@ -1,6 +1,6 @@
 FROM python:3.10.15-slim-bullseye
 
-WORKDIR /msa-product-service
+WORKDIR /app
 
 COPY ./requirements.txt .
 
