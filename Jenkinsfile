@@ -78,8 +78,8 @@ pipeline {
             steps {
                 dir('project-parking-CD') {
                 sh '''
-                    git config user.name "evollivia"
-                    git config user.email "ytafxt@naver.com"
+                    git config user.name "gongbu22"
+                    git config user.email "pyujin0711@naver.com"
                     git add README.md
                     git commit -m "${COMMIT_MESSAGE}"
                 '''
