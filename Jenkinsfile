@@ -88,7 +88,7 @@ pipeline {
                 sh '''
                     git config user.name "evollivia"
                     git config user.email "ytafxt@naver.com"
-                    git add README.md
+                    git add README.md project-parking/values.yaml
                     git commit -m "${COMMIT_MESSAGE}"
                 '''
                 }
