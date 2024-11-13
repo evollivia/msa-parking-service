@@ -6,7 +6,7 @@ pipeline {
         DOCKER_BUILD_TAG = "v${env.BUILD_NUMBER}"
         DOCKER_PWD = credentials('dockerhub')
         GIT_CREDENTIALS = credentials('github_token')
-        REPO_URL = 'gongbu22/project-parking-CD'
+        REPO_URL = 'gongbu22/project-parking-CD.git'
         COMMIT_MESSAGE = 'Update README.md via Jenkins Pipeline'
     }
 
@@ -22,12 +22,13 @@ pipeline {
 
         stage('Docker Image Building') {
             steps {
-                dir('msa-parking-service'){
+
                 sh '''
+                cd msa-parking-service
                 docker build --platform linux/arm64 -t ${DOCKER_IMAGE_OWNER}/arm64-parking-service:latest -t ${DOCKER_IMAGE_OWNER}/arm64-parking-service:${DOCKER_BUILD_TAG} ./msa-parking-service
                 docker tag ${DOCKER_IMAGE_OWNER}/arm64-parking-service:latest ${DOCKER_IMAGE_OWNER}/arm64-parking-service:${DOCKER_BUILD_TAG}
                 '''
-                }
+
             }
         }
 
@@ -59,7 +60,7 @@ pipeline {
             steps {
                 sh '''
                 rm -rf project-parking-CD
-                git clone https://github.com/${REPO_URL}.git
+                git clone https://github.com/${REPO_URL}
                 '''
             }
         }
@@ -91,7 +92,7 @@ pipeline {
             steps {
                 dir('project-parking-CD') {
                 sh '''
-                    git push https://${GIT_CREDENTIALS_USR}:${GIT_CREDENTIALS_PSW}@github.com/${REPO_URL}.git main
+                    git push https://${GIT_CREDENTIALS_USR}:${GIT_CREDENTIALS_PSW}@github.com/${REPO_URL} main
                 '''
                 }
             }
