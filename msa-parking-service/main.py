@@ -9,7 +9,11 @@ from sqlalchemy import text
 from routes import parking
 from service.database import SessionLocal, create_tables
 
+from prometheus_fastapi_instrumentator import Instrumentator
+
 app = FastAPI()
+
+Instrumentator().instrument(app).expose(app)
 
 # CORS 설정
 origins = os.getenv('CORS_ORIGINS','http://localhost:3000').split(",")
