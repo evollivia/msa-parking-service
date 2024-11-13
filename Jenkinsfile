@@ -24,7 +24,7 @@ pipeline {
             steps {
 
                 sh '''
-                cd msa-parking-service
+                cd msa-parking-service/msa-parking-service
                 docker build --platform linux/arm64 -t ${DOCKER_IMAGE_OWNER}/arm64-parking-service:latest -t ${DOCKER_IMAGE_OWNER}/arm64-parking-service:${DOCKER_BUILD_TAG} ./msa-parking-service
                 docker tag ${DOCKER_IMAGE_OWNER}/arm64-parking-service:latest ${DOCKER_IMAGE_OWNER}/arm64-parking-service:${DOCKER_BUILD_TAG}
                 '''
