@@ -68,7 +68,7 @@ pipeline {
             steps {
                 sh """
                     cd project-parking-CD
-                    echo "\nThis README was updated by Jenkins Build #${env.BUILD_NUMBER} on \$(date)" >> README.md
+                    echo "\nThis README was updated by parking(evollivia) Build #${env.BUILD_NUMBER} on \$(date)" >> README.md
                 """
             }
         }
