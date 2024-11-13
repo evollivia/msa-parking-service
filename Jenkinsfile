@@ -73,6 +73,15 @@ pipeline {
             }
         }
 
+        stage('Update values.yaml') {
+            steps {
+                sh """
+                    cd project-parking-CD/project-parking
+                    sed -i 's|PARKING_IMG: .*|PARKING_IMG: ${DOCKER_IMAGE_OWNER}/arm64-parking-service:${DOCKER_BUILD_TAG}|' values.yaml
+                """
+            }
+        }
+
         stage('Commit Changes') {
             steps {
                 dir('project-parking-CD') {
